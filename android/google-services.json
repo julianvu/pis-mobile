@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "342295770200",
+    "firebase_url": "https://personnel-information-system.firebaseio.com",
+    "project_id": "personnel-information-system",
+    "storage_bucket": "personnel-information-system.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:342295770200:android:19680a1b9c8f0be4f0862d",
+        "android_client_info": {
+          "package_name": "dev.julian.pisMobile"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "342295770200-ukr4sqhpjbku4duujggffje73dli6hv6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "dev.julian.pisMobile",
+            "certificate_hash": "d14c07a604430df8f769727feb6bbaeb397b39c9"
+          }
+        },
+        {
+          "client_id": "342295770200-5lp3bc3cv00q91l0vcuvsjk9hb5aoqqd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCJrhHe0Uf9BQzUNnSwaAfsD6YRbre30SI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "342295770200-5lp3bc3cv00q91l0vcuvsjk9hb5aoqqd.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "342295770200-npn19af90i1j4dtsa0konq6plu2r7963.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "dev.julianvu.pisMobile"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
