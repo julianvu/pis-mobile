@@ -1,6 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:pis_mobile/src/bloc/login_bloc.dart';
+import 'package:pis_mobile/src/view/login_screen.dart';
+import 'package:pis_mobile/src/view/login_selection.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   runApp(MyApp());
@@ -9,14 +13,39 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
+    return Provider<LoginBloc>(
+      create: (context) => LoginBloc(),
+      child: MaterialApp(
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+          visualDensity: VisualDensity.adaptivePlatformDensity,
+        ),
+        onGenerateRoute: routes,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
     );
+  }
+
+  Route routes(RouteSettings settings) {
+    if (settings.name == "/") {
+      return MaterialPageRoute(
+        builder: (context) => Scaffold(
+          appBar: AppBar(
+            title: Text("Personnel Information System"),
+          ),
+          body: LoginSelection(),
+        ),
+      );
+    } else if (settings.name == "/login") {
+      return MaterialPageRoute(
+        builder: (context) => Scaffold(
+          appBar: AppBar(
+            title: Text("Personnel Information System"),
+          ),
+          body: LoginScreen(),
+        ),
+      );
+    }
   }
 }
 
