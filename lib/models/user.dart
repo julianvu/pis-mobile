@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 class User {
+  final String uid;
   final String name;
   final String phone;
   final String email;
@@ -9,6 +10,7 @@ class User {
   final String description;
 
   User({
+    this.uid,
     this.name,
     this.phone,
     this.email,
@@ -18,6 +20,7 @@ class User {
   });
 
   User copyWith({
+    String uid,
     String name,
     String phone,
     String email,
@@ -26,6 +29,7 @@ class User {
     String description,
   }) {
     return User(
+      uid: uid ?? this.uid,
       name: name ?? this.name,
       phone: phone ?? this.phone,
       email: email ?? this.email,
@@ -37,6 +41,7 @@ class User {
 
   Map<String, dynamic> toMap() {
     return {
+      'uid': uid,
       'name': name,
       'phone': phone,
       'email': email,
@@ -50,6 +55,7 @@ class User {
     if (map == null) return null;
 
     return User(
+      uid: map['uid'],
       name: map['name'],
       phone: map['phone'],
       email: map['email'],
@@ -65,7 +71,7 @@ class User {
 
   @override
   String toString() {
-    return 'User(name: $name, phone: $phone, email: $email, location: $location, title: $title, description: $description)';
+    return 'User(uid: $uid, name: $name, phone: $phone, email: $email, location: $location, title: $title, description: $description)';
   }
 
   @override
@@ -73,6 +79,7 @@ class User {
     if (identical(this, o)) return true;
 
     return o is User &&
+        o.uid == uid &&
         o.name == name &&
         o.phone == phone &&
         o.email == email &&
@@ -83,7 +90,8 @@ class User {
 
   @override
   int get hashCode {
-    return name.hashCode ^
+    return uid.hashCode ^
+        name.hashCode ^
         phone.hashCode ^
         email.hashCode ^
         location.hashCode ^

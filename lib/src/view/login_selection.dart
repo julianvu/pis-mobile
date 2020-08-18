@@ -7,7 +7,7 @@ class LoginSelection extends StatelessWidget {
       alignment: Alignment.center,
       child: Column(
         children: [
-          signUpButton(),
+          signUpButton(context),
           Padding(padding: const EdgeInsets.all(20.0)),
           loginButton(context)
         ],
@@ -15,9 +15,11 @@ class LoginSelection extends StatelessWidget {
     );
   }
 
-  Widget signUpButton() {
+  Widget signUpButton(BuildContext context) {
     return RaisedButton(
-      onPressed: () {},
+      onPressed: () {
+        Navigator.pushNamed(context, "/signup");
+      },
       child: Text("Sign Up"),
       color: Colors.blue,
     );

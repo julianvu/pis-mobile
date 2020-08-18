@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:pis_mobile/src/bloc/login_bloc.dart';
 import 'package:pis_mobile/src/view/login_screen.dart';
 import 'package:pis_mobile/src/view/login_selection.dart';
+import 'package:pis_mobile/src/view/signup_screen.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -27,24 +28,31 @@ class MyApp extends StatelessWidget {
   }
 
   Route routes(RouteSettings settings) {
-    if (settings.name == "/") {
-      return MaterialPageRoute(
-        builder: (context) => Scaffold(
-          appBar: AppBar(
-            title: Text("Personnel Information System"),
+    switch (settings.name) {
+      case "/login":
+        return MaterialPageRoute(
+          builder: (context) => Scaffold(
+            appBar: AppBar(
+              title: Text("Personnel Information System"),
+            ),
+            body: LoginScreen(),
           ),
-          body: LoginSelection(),
-        ),
-      );
-    } else if (settings.name == "/login") {
-      return MaterialPageRoute(
-        builder: (context) => Scaffold(
-          appBar: AppBar(
-            title: Text("Personnel Information System"),
+        );
+        break;
+      case "/signup":
+        return MaterialPageRoute(
+          builder: (context) => SignupScreen(),
+        );
+        break;
+      default:
+        return MaterialPageRoute(
+          builder: (context) => Scaffold(
+            appBar: AppBar(
+              title: Text("Personnel Information System"),
+            ),
+            body: LoginSelection(),
           ),
-          body: LoginScreen(),
-        ),
-      );
+        );
     }
   }
 }
