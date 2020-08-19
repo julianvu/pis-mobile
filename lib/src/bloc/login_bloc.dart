@@ -72,7 +72,9 @@ class LoginBloc extends Object with Validators {
   }
 
   void dispose() {
+    _name.close();
     _email.close();
     _password.close();
+    _passwordConfirm.close();
   }
 }
