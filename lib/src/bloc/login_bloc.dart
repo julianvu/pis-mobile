@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:pis_mobile/models/user.dart';
+import 'package:pis_mobile/repository/database.dart';
 import 'package:pis_mobile/src/bloc/validators.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:rxdart/subjects.dart';
@@ -21,10 +22,12 @@ class LoginBloc extends Object with Validators {
 
   // Retrieve data from stream
   Stream<String> get name => _name.stream;
-  Stream<String> get email => _email.stream.transform(validateEmail);
-  Stream<String> get password => _password.stream.transform(validatePassword);
+  Stream<String> get email =>
+      _email.stream.transform(emailValidationTransformer);
+  Stream<String> get password =>
+      _password.stream.transform(passwordValidationTransformer);
   Stream<String> get passwordConfirm =>
-      _passwordConfirm.stream.transform(validatePassword).doOnData(
+      _passwordConfirm.stream.transform(passwordValidationTransformer).doOnData(
         (event) {
           if (_password.value.compareTo(event) != 0) {
             _passwordConfirm.sink.addError("Passwords do not match");
@@ -47,8 +50,7 @@ class LoginBloc extends Object with Validators {
         email: _email.value,
       );
 
-      CollectionReference users = Firestore.instance.collection("users");
-      users.document(user.uid).setData(user.toMap());
+      db.createUser(user);
     } on AuthException catch (e) {
       print(e.message);
     } catch (e) {

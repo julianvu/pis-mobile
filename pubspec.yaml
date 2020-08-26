@@ -37,6 +37,10 @@ dependencies:
 
   provider: ^4.3.1
 
+  equatable: ^1.2.4
+
+  bloc: ^6.0.2
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
